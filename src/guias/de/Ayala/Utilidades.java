@@ -1,4 +1,4 @@
-package guia.de.augusto;
+package guias.de.Ayala;
 
 import java.util.Scanner;
 
