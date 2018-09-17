@@ -25,7 +25,7 @@ public class TratamientoDatos extends Utilidades {
         if (find) {
             return encontradoN;
         } else {
-            return "Numero no encontrado";
+            return "Ningun resultado encontrado";
         }
     }
 }
