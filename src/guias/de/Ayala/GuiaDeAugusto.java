@@ -6,43 +6,61 @@ import java.util.Scanner;
 public class GuiaDeAugusto {
 
     public static void main(String[] args) {
-        int opciones,tamano;
+        int opciones, tamano;
         Scanner entrada = new Scanner(System.in);
         Utilidades u = new Utilidades();
+        TratamientoDatos t = new TratamientoDatos();
         ArrayList<String> nombres = new ArrayList();
         ArrayList<String> apellidos = new ArrayList();
 
         do {
-            System.out.println("Ingrese la opcion deseada\n1.Llenar arraylist\n2.Llenar 10 posiciones mas\n3.Mostrar datos en vector\n4.Ordenar vector\n5.Agregar un dato al vector\n6.Borrar posicion en vector\n7.Buscar dato en el vector");
+            System.out.println("Ingrese la opcion deseada\n1.Llenar arraylist\n2.Llenar n posiciones mas\n3.Mostrar datos en arrayList\n4.Ordenar arrayList\n5.Agregar un dato al arrayList\n6.Borrar posicion en arrayList\n7.Buscar dato en el arrayList");
             opciones = entrada.nextInt();
             switch (opciones) {
                 case 1:
-                    do{
-                    System.out.println("De que tamaño quiere su arraylist");
-                    tamano = entrada.nextInt();
-                    }while(tamano<=0);
-                    for(int i =0;i<tamano;i++){
+                    do {
+                        System.out.println("De que tamaño quiere su arraylist");
+                        tamano = entrada.nextInt();
+                    } while (tamano <= 0);
+                    for (int i = 0; i < tamano; i++) {
+                        System.out.println("Ingrese el nombre de la persona #: " + (nombres.size() + 1));
                         nombres.add(entrada.nextLine());
+                        System.out.println("Ingrese el apellido de la persona#: " + (nombres.size() + 1));
                         apellidos.add(entrada.nextLine());
                     }
                     break;
                 case 2:
-//                    vector = o.llenarVector(vector);
+                    do {
+                        System.out.println("Ingrese cuantas posiciones mas desea llenar");
+                        tamano = entrada.nextInt();
+                    } while (tamano <= 0);
+                    for (int i = 0; i < tamano; i++) {
+                        System.out.println("Ingrese el nombre de la persona#: " + (nombres.size() + 1));
+                        nombres.add(entrada.nextLine());
+                        System.out.println("Ingrese el apellido de la persona" + (apellidos.size() + 1));
+                    }
                     break;
                 case 3:
-//                    o.mostrar(vector);
+                    System.out.println("Mostrar valores en los arrayList");
+                    u.mostrarArraylist(nombres, apellidos);
                     break;
                 case 4:
 //                    vector2 = o.ordenarVector(vector);
                     break;
                 case 5:
-//                    vector = t.agregar(vector);
+                    System.out.println("Agregar una posicion a los ArrayList");
+                    System.out.println("Ingrese un nombre para el arrayList en la posicion: " + (nombres.size() + 1));
+                    nombres.add(entrada.nextLine());
+                    System.out.println("Ingrese un apellido para el arrayList en la posicion: " + (apellidos.size() + 1));
                     break;
                 case 6:
-//                    vector = t.borrar(vector);
+                    System.out.println("Borrar posicion en arrayList");
+                    System.out.println("Ingrese la posicion del arrayList que desea boorar");
+                    nombres.remove((entrada.nextInt() - 1));
+                    apellidos.remove((entrada.nextInt() - 1));
                     break;
                 case 7:
-//                    System.out.println(t.buscar(vector));
+                    System.out.println(t.buscar(nombres, apellidos));
                     break;
             }
         } while (opciones >= 1 && opciones <= 6);
