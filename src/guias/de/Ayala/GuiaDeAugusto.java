@@ -9,10 +9,10 @@ public class GuiaDeAugusto {
         int opciones, tamano;
         Scanner entrada = new Scanner(System.in);
         Utilidades u = new Utilidades();
+        String temp;
         TratamientoDatos t = new TratamientoDatos();
         ArrayList<String> nombres = new ArrayList();
         ArrayList<String> apellidos = new ArrayList();
-
         do {
             System.out.println("Ingrese la opcion deseada\n1.Llenar arraylist\n2.Llenar n posiciones mas\n3.Mostrar datos en arrayList\n4.Ordenar arrayList\n5.Agregar un dato al arrayList\n6.Borrar posicion en arrayList\n7.Buscar dato en el arrayList");
             opciones = entrada.nextInt();
@@ -24,9 +24,11 @@ public class GuiaDeAugusto {
                     } while (tamano <= 0);
                     for (int i = 0; i < tamano; i++) {
                         System.out.println("Ingrese el nombre de la persona #: " + (nombres.size() + 1));
-                        nombres.add(entrada.nextLine());
-                        System.out.println("Ingrese el apellido de la persona#: " + (nombres.size() + 1));
-                        apellidos.add(entrada.nextLine());
+                        temp = entrada.nextLine();
+                        nombres.add(temp);
+                        System.out.println("Ingrese el apellido de la persona#: " + (apellidos.size() + 1));
+                        temp = entrada.nextLine();
+                        apellidos.add(temp);
                     }
                     break;
                 case 2:
@@ -35,9 +37,10 @@ public class GuiaDeAugusto {
                         tamano = entrada.nextInt();
                     } while (tamano <= 0);
                     for (int i = 0; i < tamano; i++) {
-                        System.out.println("Ingrese el nombre de la persona#: " + (nombres.size() + 1));
+                        System.out.println("Ingrese el nombre de la persona#: " + (nombres.size() + 1)+"");
                         nombres.add(entrada.nextLine());
-                        System.out.println("Ingrese el apellido de la persona" + (apellidos.size() + 1));
+                        System.out.println("Ingrese el apellido de la persona#: " + (apellidos.size() + 1));
+                        apellidos.add(entrada.nextLine());
                     }
                     break;
                 case 3:
@@ -46,6 +49,7 @@ public class GuiaDeAugusto {
                     break;
                 case 4:
 //                    vector2 = o.ordenarVector(vector);
+                    System.out.println("aun no funciona wee :v");
                     break;
                 case 5:
                     System.out.println("Agregar una posicion a los ArrayList");
@@ -60,10 +64,28 @@ public class GuiaDeAugusto {
                     apellidos.remove((entrada.nextInt() - 1));
                     break;
                 case 7:
-                    System.out.println(t.buscar(nombres, apellidos));
+                    System.out.println("Buscar nombres o apellidos");
+                    int opcionNombre;
+                    boolean error = false;
+                    do {
+                        if (error) {
+                            System.out.println("Opcion incorrecta ingrese una opcion correcta");
+                        }
+                        System.out.println("Que desea buscar\n1. Nombres\n2. Apellidos");
+                        opcionNombre = entrada.nextInt();
+                        error = true;
+                    } while (opcionNombre < 1 || opcionNombre > 2);
+                    switch (opcionNombre) {
+                        case 1:
+                            System.out.println(t.buscar(nombres, 1));
+                            break;
+                        case 2:
+                            System.out.println(t.buscar(apellidos, 2));
+                            break;
+                    }
                     break;
             }
-        } while (opciones >= 1 && opciones <= 6);
+        } while (opciones >= 1 && opciones <= 7);
 
     }
 }
